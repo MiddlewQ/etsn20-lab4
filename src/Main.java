@@ -1,6 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.List;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -9,20 +9,18 @@ public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        if(args.length < 3) {
-            System.out.println("Usage: search <pattern> <filename>");
-            System.exit(1);
-        }
-        if(!args[0].equals("search")) {
-            System.out.println("Unknown command, only search implemented");
+        if(args.length != 3) {
+            System.err.println("Usage: search <pattern> <filename>");
             System.exit(1);
         }
 
+        if(!Objects.equals(args[0], "search")) {
+            System.err.println("Unknown command, only search implemented");
+            System.exit(1);
+        }
 
-        List<String> pattern_words = Arrays.asList(args).subList(1, args.length - 1);
-
-        File input_file = new File(args[args.length - 1]);
-        String my_pattern = create_pattern(pattern_words);
+        File input_file = new File(args[2]);
+        String my_pattern = args[1];
 
         print_lines(my_pattern, input_file);
     }
@@ -37,10 +35,11 @@ public class Main {
                 }
             }
         } catch(FileNotFoundException e) {
-            System.out.println("Could not open file");
+            System.err.println("Could not open file" + input_file);
         }
     }
 
+    // deprecated functionality
     static String create_pattern(List<String> words) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0  ; i < words.size(); i++) {
