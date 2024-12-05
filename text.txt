@@ -139,16 +139,3 @@ alias edaf90="cd ~/skola/edaf90/"
 alias etsn20="cd ~/skola/etsn20/"
 alias edaf35="cd ~/skola/edaf35/"
 
-
-# My Raspberry Pi Server
-username="middlew"
-hostname="rasp-server"
-home_ipv4="46.162.78.242"
-
-alias rasp="ssh $username@$hostname"
-alias rasp-remote="ssh $username@$home_ipv4"
-
-# Connect to the power machine at LTH
-pwr_username="vi5648be-s"
-pwr_domain="power8.cs.lth.se"
-alias connect="ssh $pwr_username@$pwr_domain" #using ssh-copy-id
