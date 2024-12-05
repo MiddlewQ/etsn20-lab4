@@ -4,7 +4,7 @@ This file describe good questions to consider before and during a code review.
 
 ### First here is some terminology:
 - CL - Change List 
-- GTM - Looks good to me
+- LGTM - Looks good to me
 
 ### Design Questions:
 - Do the interactions of the code in the CL make sense?
